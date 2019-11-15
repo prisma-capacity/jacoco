@@ -15,47 +15,47 @@
 
   <parent>
     <groupId>org.jacoco</groupId>
-    <artifactId>org.jacoco.build</artifactId>
-    <version>0.8.5-PRISMA</version>
-    <relativePath>../org.jacoco.build</relativePath>
+    <artifactId>org.jacoco.core.test.validation</artifactId>
+    <version>0.8.5</version>
+    <relativePath>../org.jacoco.core.test.validation</relativePath>
   </parent>
 
-  <artifactId>org.jacoco.report</artifactId>
+  <artifactId>org.jacoco.core.test.validation.scala</artifactId>
 
-  <name>JaCoCo :: Report</name>
-  <description>JaCoCo Report</description>
+  <name>JaCoCo :: Test :: Core :: Validation Scala</name>
+
+  <properties>
+    <bytecode.version>6</bytecode.version>
+  </properties>
 
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>org.jacoco.core</artifactId>
+      <artifactId>org.jacoco.core.test</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>2.12.8</version>
     </dependency>
   </dependencies>
 
   <build>
-    <sourceDirectory>src</sourceDirectory>
-
     <plugins>
       <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>4.0.2</version>
         <executions>
           <execution>
-            <phase>process-classes</phase>
+            <id>compile</id>
+            <phase>process-sources</phase>
             <goals>
-              <goal>manifest</goal>
+              <goal>compile</goal>
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-          </archive>
-        </configuration>
       </plugin>
     </plugins>
   </build>

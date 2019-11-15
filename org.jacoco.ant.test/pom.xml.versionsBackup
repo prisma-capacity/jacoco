@@ -15,46 +15,45 @@
 
   <parent>
     <groupId>org.jacoco</groupId>
-    <artifactId>org.jacoco.build</artifactId>
-    <version>0.8.5-PRISMA</version>
-    <relativePath>../org.jacoco.build</relativePath>
+    <artifactId>org.jacoco.tests</artifactId>
+    <version>0.8.5</version>
+    <relativePath>../org.jacoco.tests</relativePath>
   </parent>
 
-  <artifactId>org.jacoco.report</artifactId>
+  <artifactId>org.jacoco.ant.test</artifactId>
 
-  <name>JaCoCo :: Report</name>
-  <description>JaCoCo Report</description>
+  <name>JaCoCo :: Test :: Ant</name>
+
+  <properties>
+    <jacoco.includes>org.jacoco.ant.*</jacoco.includes>
+  </properties>
 
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>org.jacoco.core</artifactId>
+      <artifactId>org.jacoco.ant</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.ant</groupId>
+      <artifactId>ant-antunit</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.ant</groupId>
+      <artifactId>ant-junit</artifactId>
     </dependency>
   </dependencies>
 
   <build>
-    <sourceDirectory>src</sourceDirectory>
-
     <plugins>
       <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
-        <executions>
-          <execution>
-            <phase>process-classes</phase>
-            <goals>
-              <goal>manifest</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
+        <artifactId>maven-surefire-plugin</artifactId>
         <configuration>
-          <archive>
-            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-          </archive>
+          <basedir>${project.build.outputDirectory}/org/jacoco/ant</basedir>
         </configuration>
       </plugin>
     </plugins>

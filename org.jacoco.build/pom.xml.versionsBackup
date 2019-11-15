@@ -15,7 +15,7 @@
 
   <groupId>org.jacoco</groupId>
   <artifactId>org.jacoco.build</artifactId>
-  <version>0.8.5-PRISMA</version>
+  <version>0.8.5</version>
   <packaging>pom</packaging>
 
   <name>JaCoCo</name>
@@ -111,14 +111,10 @@
     <url>https://github.com/jacoco/jacoco/issues</url>
   </issueManagement>
   <distributionManagement>
-<!--     <repository>
+    <repository>
       <id>sonatype-nexus-staging</id>
       <name>Nexus Release Repository</name>
       <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository> -->
-    <repository>
-      <id>libs-release</id>
-      <url>https://prisma.jfrog.io/prisma/libs-release</url>
     </repository>
     <snapshotRepository>
       <id>sonatype-nexus-snapshots</id>
@@ -614,7 +610,6 @@
         <executions>
           <execution>
             <id>check-license-header</id>
-            <phase>validate</phase>
             <goals>
               <goal>run</goal>
             </goals>

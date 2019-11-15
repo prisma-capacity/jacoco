@@ -16,19 +16,27 @@
   <parent>
     <groupId>org.jacoco</groupId>
     <artifactId>org.jacoco.build</artifactId>
-    <version>0.8.5-PRISMA</version>
+    <version>0.8.5</version>
     <relativePath>../org.jacoco.build</relativePath>
   </parent>
 
-  <artifactId>org.jacoco.report</artifactId>
+  <artifactId>org.jacoco.core</artifactId>
 
-  <name>JaCoCo :: Report</name>
-  <description>JaCoCo Report</description>
+  <name>JaCoCo :: Core</name>
+  <description>JaCoCo Core</description>
 
   <dependencies>
     <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>org.jacoco.core</artifactId>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm-commons</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.ow2.asm</groupId>
+      <artifactId>asm-tree</artifactId>
     </dependency>
   </dependencies>
 

@@ -16,46 +16,27 @@
   <parent>
     <groupId>org.jacoco</groupId>
     <artifactId>org.jacoco.tests</artifactId>
-    <version>0.8.5-PRISMA</version>
+    <version>0.8.5</version>
     <relativePath>../org.jacoco.tests</relativePath>
   </parent>
 
-  <artifactId>org.jacoco.ant.test</artifactId>
+  <artifactId>org.jacoco.cli.test</artifactId>
 
-  <name>JaCoCo :: Test :: Ant</name>
+  <name>JaCoCo :: Test :: Command Line Interface</name>
 
   <properties>
-    <jacoco.includes>org.jacoco.ant.*</jacoco.includes>
+    <jacoco.includes>org.jacoco.cli.*</jacoco.includes>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>org.jacoco.ant</artifactId>
+      <artifactId>org.jacoco.cli</artifactId>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.apache.ant</groupId>
-      <artifactId>ant-antunit</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.ant</groupId>
-      <artifactId>ant-junit</artifactId>
-    </dependency>
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <configuration>
-          <basedir>${project.build.outputDirectory}/org/jacoco/ant</basedir>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 </project>

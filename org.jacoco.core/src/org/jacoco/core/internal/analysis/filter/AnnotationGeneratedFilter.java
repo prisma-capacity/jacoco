@@ -28,7 +28,7 @@ public final class AnnotationGeneratedFilter implements IFilter {
 	public void filter(final MethodNode methodNode,
 			final IFilterContext context, final IFilterOutput output) {
 
-		for (String annotation : context.getClassAnnotations()) {
+		for (final String annotation : context.getClassAnnotations()) {
 			if (matches(annotation)) {
 				output.ignore(methodNode.instructions.getFirst(),
 						methodNode.instructions.getLast());
@@ -48,12 +48,12 @@ public final class AnnotationGeneratedFilter implements IFilter {
 		final String name = annotation
 				.substring(Math.max(annotation.lastIndexOf('/'),
 						annotation.lastIndexOf('$')) + 1);
-		return name.contains("Generated");
+		return name.contains("Generated") || name.contains("NoCoverage");
 	}
 
 	private static boolean presentIn(final List<AnnotationNode> annotations) {
 		if (annotations != null) {
-			for (AnnotationNode annotation : annotations) {
+			for (final AnnotationNode annotation : annotations) {
 				if (matches(annotation.desc)) {
 					return true;
 				}

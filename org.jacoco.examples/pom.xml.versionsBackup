@@ -16,19 +16,23 @@
   <parent>
     <groupId>org.jacoco</groupId>
     <artifactId>org.jacoco.build</artifactId>
-    <version>0.8.5-PRISMA</version>
+    <version>0.8.5</version>
     <relativePath>../org.jacoco.build</relativePath>
   </parent>
 
-  <artifactId>org.jacoco.report</artifactId>
+  <artifactId>org.jacoco.examples</artifactId>
 
-  <name>JaCoCo :: Report</name>
-  <description>JaCoCo Report</description>
+  <name>JaCoCo :: Examples</name>
+  <description>JaCoCo API Usage Examples</description>
+
+  <properties>
+    <maven.deploy.skip>true</maven.deploy.skip>
+  </properties>
 
   <dependencies>
     <dependency>
       <groupId>${project.groupId}</groupId>
-      <artifactId>org.jacoco.core</artifactId>
+      <artifactId>org.jacoco.report</artifactId>
     </dependency>
   </dependencies>
 
@@ -37,25 +41,22 @@
 
     <plugins>
       <plugin>
-        <groupId>org.apache.felix</groupId>
-        <artifactId>maven-bundle-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
         <executions>
           <execution>
-            <phase>process-classes</phase>
+            <phase>package</phase>
             <goals>
-              <goal>manifest</goal>
+              <goal>single</goal>
             </goals>
+            <configuration>
+              <appendAssemblyId>false</appendAssemblyId>
+              <descriptors>
+                <descriptor>assembly.xml</descriptor>
+              </descriptors>
+            </configuration>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-          </archive>
-        </configuration>
       </plugin>
     </plugins>
   </build>
